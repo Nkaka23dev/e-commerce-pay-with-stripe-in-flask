@@ -1,0 +1,4 @@
+.vscode
+migrations
+__pycache__
+site.db

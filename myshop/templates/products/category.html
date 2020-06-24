@@ -1,0 +1,37 @@
+{%extends "layout.html"%}
+{%block content%}
+<div class="container">
+<div class="row">
+<div class="col-md-3"></div>
+<div class="col-md-6">
+<form action="" method="POST" enctype="multipart/form-data" class="my-2">
+    {{form.hidden_tag()}}
+    <fieldset class="form-group">
+    <legend class=" text-dark display-5 font-weight-bold">{{legend}}</legend>
+    {%include '_message.html'%}
+        <!-- form groups -->
+    <div class="form-group">
+        <!-- {{form.name.label(class="form-control-label font-weight-bold")}} -->
+        {%if form.name.errors%}
+          {{form.name(class="form-control form-control-md is-invalid")}}
+          <div class="invalid-feedback">
+            {%for error in form.name.errors%}
+            <span>{{error}}</span>
+            {%endfor%}
+        </div>
+        {%else%}
+        {{form.name(class="form-control form-control-md")}}
+        {%endif%}
+        </div>
+        <!-- form groups -->
+    <div class="form-group">
+        {{form.submit(class="btn btn-info")}}
+        <a href="{{url_for('categories')}}" class="btn btn-warning">Cancel</a>
+        </div>
+    </fieldset> 
+</form>
+</div>
+<div class="col-md-3"></div>
+</div>
+</div>
+{%endblock content%}

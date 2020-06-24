@@ -1,0 +1,85 @@
+{%extends "layout.html"%}
+{%block content%}
+{%include "customernav.html"%}
+<div class="container bg-white">
+    <div class="row py-1">
+    <div class="col-md-12">
+      {%include "_message.html"%}
+      <div class="text-muted font-weight-bold ">
+      Invoice:  {{orders.invoice}}
+      <br>
+      Status:   {{orders.status}}
+      <br>
+      Customer Name:   {{customer.name}}
+      <br>
+      Customer Email:   {{customer.email}}
+      <br>
+      Customer Contact:  {{customer.contact}}
+      <br>
+      <br>
+    </div>
+      <table class="table table-responsive-sm table-borderless">
+          <thead>
+              <th>sr</th>
+              <th>Name</th>
+              <th>Color</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Discount</th>
+              <th>Subtotal</th>
+          </thead>
+          <tbody>
+              {%for key,product in  orders.orders.items()%}
+              {%set discount="%0.2f" |format((product.discount/100)*product.price|float)%}
+              <!-- {%set totaldiscount=discount|float*product.quantity|float%} -->
+                <!--the above totaldiscount can be used instead of discount if we give discount
+                each quantity  -->
+              <tr>
+                  <td>{{loop.index}}</td>
+                  <td>{{product.name}}</td>
+                  <td>{{product.colors|capitalize}}</td>
+                  <td>${{product.price}}</td>
+                  <td>{{product.quantity}}</td>
+                  {%if product.discount>0%}
+                  <td>{{product.discount}}% &nbsp; is ${{discount}}</td>
+                  {%else%}
+                  <td></td>
+                  {%endif%}
+                  {%set subtotal=product.quantity|int*product.price|float%}
+                  <td>${{"%0.2f"|format(subtotal|float-discount|float)}}</td>
+              </tr>
+              {%endfor%}
+              <tr>
+            <td></td>
+            <td>
+              {%if orders.status=='Paid'%}
+              {%else%}
+              <form action="{{url_for('payment')}}" method="POST">
+              {%set amount=grandtotal.replace('.','')%}
+              <input type="hidden" name="amount" value="{{amount}}">
+              <input type="hidden" name="invoice" value="{{orders.invoice}}">
+              <script
+                src="https://checkout.stripe.com/checkout.js"
+                class="stripe-button"
+                data-key="pk_test_51GqaJEER9nv2mwVYduduTD0asSJTH03J50ccb7JEShKXrn17IDjncPKVPbtmwPadT1cfk85UuqhNpqA7mkP9lC3H00x0LpH2SF"
+                data-name="NkakaShop"
+                data-description="Shop with Nkakashop😘"
+                data-amount="{{amount}}"
+                data-currency="usd">
+              </script>
+            </form>
+            {%endif%}
+            </td>
+            <td colspan="2" class="text-secondary" ><h4>Tax=${{tax}}</h4></td>
+            <td colspan="2" class="text-secondary" ><h4>GrandTotal=${{grandtotal}}</h4></td>
+            <td><form action="{{url_for('get_pdf',invoice=orders.invoice)}}" method="POST">
+              <button type="submit" class="btn btn-info btn-sm">Get PDF</button>
+             </form></td>
+              </tr>
+          </tbody>
+      </table>
+      </div>
+    </div>
+</div>
+{%endblock content%}
+

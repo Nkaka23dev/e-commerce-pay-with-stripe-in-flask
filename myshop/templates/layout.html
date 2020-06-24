@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+    <!-- css styling -->
+    <!-- <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='shope.css')}}"> -->
+    {%if title%}
+    <title>Myshop-{{title}}</title>
+    {%else%}
+    <title>Myshop</title>
+    {%endif%}
+</head>
+<body>
+  
+  {%block content%}{%endblock content%}
+
+  <div class="container mt-3">
+ <footer class="page-footer bg-light">
+  <div class="footer-copyright text-center py-3">
+    Copyright © 2020 
+    <a href="/" class="font-weight-bold text-muted">Eric Nkaka </a>
+  </div>
+ </footer>
+  </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="{{url_for('static',filename='js/jquery-3.5.1.slim.min.js')}}" ></script>
+    <script src="{{url_for('static',filename='js/popper.min.js')}}" ></script>
+    <script src="{{url_for('static',filename='js/bootstrap.min.js')}}" ></script>
+  </body>   
+</html>

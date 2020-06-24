@@ -1,0 +1,101 @@
+{%extends "layout.html"%}
+{%block content%}
+<div class="container">
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+<form action="" method="POST" enctype="multipart/form-data">
+{{form.hidden_tag()}}
+<fieldset class="form-group">
+<legend class="text-center text-danger font-weight-bold text-light bg-info py-2">
+  Register</legend>
+<!-- form groups -->
+<div class="form-group">
+{{form.name.label(class="form-control-label font-weight-bold")}}
+{%if form.name.errors%}
+  {{form.name(class="form-control form-control-md is-invalid")}}
+  <div class="invalid-feedback">
+    {%for error in form.name.errors%}
+    <span>{{error}}</span>
+    {%endfor%}
+</div>
+{%else%}
+{{form.name(class="form-control form-control-md")}}
+{%endif%}
+</div>
+<!-- form groups -->
+<div class="form-group">
+    {{form.username.label(class="form-control-label font-weight-bold")}}
+    {%if form.username.errors%}
+      {{form.username(class="form-control form-control-md is-invalid")}}
+      <div class="invalid-feedback">
+        {%for error in form.username.errors%}
+        <span>{{error}}</span>
+        {%endfor%}
+    </div>
+    {%else%}
+    {{form.username(class="form-control form-control-md")}}
+    {%endif%}
+    </div>
+    <!-- form groups -->
+<div class="form-group">
+    {{form.email.label(class="form-control-label font-weight-bold")}}
+    {%if form.email.errors%}
+      {{form.email(class="form-control form-control-md is-invalid")}}
+      <div class="invalid-feedback">
+        {%for error in form.email.errors%}
+        <span>{{error}}</span>
+        {%endfor%}
+    </div>
+    {%else%}
+    {{form.email(class="form-control form-control-md")}}
+    {%endif%}
+    </div>
+    <!-- form groups -->
+<div class="form-group">
+    {{form.password.label(class="form-control-label font-weight-bold")}}
+    {%if form.password.errors%}
+      {{form.password(class="form-control form-control-md is-invalid")}}
+      <div class="invalid-feedback">
+        {%for error in form.password.errors%}
+        <span>{{error}}</span>
+        {%endfor%}
+    </div>
+    {%else%}
+    {{form.password(class="form-control form-control-md")}}
+    {%endif%}
+    </div>
+    <!-- form groups -->
+<div class="form-group">
+    {{form.comfirm_password.label(class="form-control-label font-weight-bold")}}
+    {%if form.comfirm_password.errors%}
+      {{form.comfirm_password(class="form-control form-control-md is-invalid")}}
+      <div class="invalid-feedback">
+        {%for error in form.comfirm_password.errors%}
+        <span>{{error}}</span>
+        {%endfor%}
+    </div>
+    {%else%}
+    {{form.comfirm_password(class="form-control form-control-md")}}
+    {%endif%}
+    </div>
+    <!-- imagefield is right here -->
+    <div class="form-group">
+    {{form.picture(class="form-control-file")}}
+    {%if form.picture.errors%}
+    {%for error in form.picture.errors%}
+    <span class="text-danger">{{error}}</span>
+    {%endfor%}
+    {%endif%}
+  </div>
+    <!-- form groups -->
+<div class="form-group">
+    {{form.submit(class="btn btn-outline-info")}}
+    </div>
+</fieldset> 
+</form>
+</div>
+<div class="col-md-3"></div>
+</div>
+</div>
+{%endblock content%}

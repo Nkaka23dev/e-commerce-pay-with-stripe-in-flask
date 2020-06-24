@@ -1,0 +1,160 @@
+{%extends "layout.html"%}
+{%block content%}
+<div class="container">
+<div class="row">
+<div class="col-md-2"></div>
+<div class="col-md-8">
+<form action="" method="POST" enctype="multipart/form-data" class="my-2">
+    {{form.hidden_tag()}}
+    <fieldset class="form-group">
+    <legend class=" text-light display-5 font-weight-bold bg-info text-center p-2">
+        Update product</legend>
+    {%include '_message.html'%}
+        <!-- form groups -->
+    <div class="form-group">
+        {{form.name.label(class="form-control-label font-weight-bold")}}
+        {%if form.name.errors%}
+          {{form.name(class="form-control form-control-md is-invalid",placeholder="Add a Product name")}}
+          <div class="invalid-feedback">
+            {%for error in form.name.errors%}
+            <span>{{error}}</span>
+            {%endfor%}
+        </div>
+        {%else%}
+        {{form.name(class="form-control form-control-md",placeholder="Add a Product name")}}
+        {%endif%}
+        </div>
+        <!-- form group -->
+        <div class="form-group">
+            {{form.price.label(class="form-control-label font-weight-bold")}}
+            {%if form.price.errors%}
+            {{form.price(class="form-control form-control-md is-valid",placeholder="Add a Product price")}}
+            <div class="invalid-feedback">
+             {%for error in form.price.errors%}
+             <span>{{error}}</span>
+             {%endfor%}
+            </div>
+            {%else%}
+            {{form.price(class="form-control form-control-md",placeholder="Add a Product price")}}
+            {%endif%}
+            </div>
+               <!-- start of div section -->
+       <div class="form-group">
+        {{form.discount.label(class="form-control-label font-weight-bold")}}
+        {%if form.discount.errors%}
+        {{form.discount(class="form-control form-control-md is-valid",placeholder="Add a Product discount")}}
+        <div class="invalid-feedback">
+         {%for error in form.discount.errors%}
+     <span>{{error}}</span>
+     {%endfor%}
+    </div>
+    {%else%}
+    {{form.discount(class="form-control form-control-md",placeholder="Add a Product discount")}}
+    {%endif%}
+    </div>
+      <!-- start of div section -->
+<div class="form-group">
+    {{form.stock.label(class="form-control-label font-weight-bold")}}
+    {%if form.stock.errors%}
+    {{form.stock(class="form-control form-control-md is-valid",placeholder="Add a Product stock")}}
+    <div class="invalid-feedback">
+     {%for error in form.stock.errors%}
+     <span>{{error}}</span>
+     {%endfor%}
+    </div>
+    {%else%}
+    {{form.stock(class="form-control form-control-md",placeholder="Add a Product stock")}}
+    {%endif%}
+    </div>
+    <div class="form-group">
+    {{form.description.label(class="form-control-label font-weight-bold")}}
+    {%if form.description.errors%}
+    {{form.description(class="form-control form-control-md is-valid",placeholder="Add a Product description")}}
+    <div class="invalid-feedback">
+     {%for error in form.description.errors%}
+     <span>{{error}}</span>
+     {%endfor%}
+    </div>
+    {%else%}
+    {{form.description(class="form-control form-control-md",placeholder="Add a Product description")}}
+    {%endif%}
+    </div>
+      <!-- start of div section -->
+<div class="form-group">
+    {{form.color.label(class="form-control-label font-weight-bold")}}
+    {%if form.color.errors%}
+    {{form.color(class="form-control form-control-md is-valid",placeholder="Add a Product color")}}
+    <div class="invalid-feedback">
+     {%for error in form.color.errors%}
+     <span>{{error}}</span>
+     {%endfor%}
+    </div>
+    {%else%}
+    {{form.color(class="form-control form-control-md",placeholder="Add a Product color")}}
+    {%endif%}
+    </div>
+     <!-- select section start -->
+    <label for="brand" class="font-weight-bold">Update Brand</label>
+    <select name="brand" id="brand" class="form-control" required>
+    <option value="{{product.brand_id}}">{{product.brand.name}}</option>
+     {%for brand in brands%}
+     <option value="{{brand.id}}">{{brand.name}}</option>
+     {%endfor%}
+    </select> 
+    <!-- select section start -->
+    <label for="category" class="font-weight-bold">Update category</label>
+    <select name="category" id="category" class="form-control" required>
+    <option value="{{product.category_id}}">{{product.category.name}}</option>
+     {%for category in categories%}
+     <option value="{{category.id}}">{{category.name}}</option>
+     {%endfor%}
+    </select>
+    <div class="container">
+            <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+             {{form.picture_1.label(class="font-weight-bold")}}
+             {{form.picture_1(class="form-control-file")}}
+             {%if form.picture_1.errors%}
+             {%for error in form.picture_1.errors%}
+             <span class="text-danger">{{error}}</span>
+             {%endfor%}
+             {%endif%}
+            </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+             {{form.picture_2.label(class="font-weight-bold")}}
+             {{form.picture_2(class="form-control-file")}}
+             {%if form.picture_2.errors%}
+             {%for error in form.picture_2.errors%}
+             <span class="text-danger">{{error}}</span>
+             {%endfor%}
+             {%endif%}
+            </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+             {{form.picture_3.label(class="font-weight-bold")}}
+             {{form.picture_3(class="form-control-file")}}
+             {%if form.picture_3.errors%}
+             {%for error in form.picture_3.errors%}
+             <span class="text-danger">{{error}}</span>
+             {%endfor%}
+             {%endif%}
+            </div>
+            </div>
+            </div>
+        </div>  
+        <!-- form groups -->
+    <div class="form-group">
+        {{form.submit(class="btn btn-info")}}
+        <a href="{{url_for('admin')}}" class="btn btn-warning">Cancel</a>
+        </div>
+    </fieldset> 
+</form>
+</div>
+<div class="col-md-2"></div>
+</div>
+</div>
+{%endblock content%}

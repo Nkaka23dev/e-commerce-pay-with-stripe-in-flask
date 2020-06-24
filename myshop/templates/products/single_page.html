@@ -1,0 +1,67 @@
+{%extends "layout.html"%}
+{%block content%}
+{%include "customernav.html"%}
+<div class="container mt-3">
+<div class="row">
+    <div class="col-md-6" id="b_image">
+      
+    <img src="{{url_for('static',filename='photoes/'+product.image_1)}}"
+     alt="{{product.name}}"
+     height="300" width="300">
+   
+</div> 
+    <div class="col-md-6 px-3 mt-2">
+        <h3>{{product.name}}</h3>
+        <hr>
+        <p>Product price: ${{product.price}}</p>
+        {%if product.discount>0%}
+        <p>Product discount: {{product.discount}}%</p>
+        <hr>
+        {%endif%}
+        <b>Product description:</b>
+        <p>{{product.desc}}</p>
+        <hr>
+        <form action="{{url_for('addcart')}}" method="POST">
+        <input type="hidden" name=product_id value="{{product.id}}">
+        <button type="submit" class="btn btn-sm btn-warning">Add Cart</button>
+        <label for="">Quantinty:</label>
+        <input type="number" name="quantity" id="" value="1" min="1" max="{{product.stock}}">
+        {%set colors=product.colors.split(',')%}
+        <label>Colors:</label>
+        <select name="colors" id="">
+        {%for color in colors%}
+        {%set col=color.split(':')%}
+        <option value="{{col[0]}}">{{col[0]|capitalize}}</option>
+        {%endfor%}
+        </select>
+        </form>
+    </div>
+</div>
+<div class="row">
+  <div class="col-md-12 mt-3" id="s_image">
+      <img src="{{url_for('static',filename='photoes/'+product.image_1)}}" class="p-3"
+      alt="{{product.name}}"
+     width="120" height="120">  
+     <img src="{{url_for('static',filename='photoes/'+product.image_2)}}" class=" p-3"
+     alt="{{product.name}}"
+    width="120" height="120">
+    <img src="{{url_for('static',filename='photoes/'+product.image_3)}}" class=" p-3"
+    alt="{{product.name}}"
+   width="120" height="120">
+    </div>
+    </div>
+   </div>
+   
+ <script>
+   var b_image=document.getElementById('b_image');
+   var s_image=document.getElementById('s_image').getElementsByTagName('img');
+   for(var i=0;i<s_image.length;i++){
+   s_image[i].addEventListener('click',full_image);
+    }
+   function full_image(){
+   var ImageSRC=this.getAttribute('src');
+   b_image.innerHTML="<img src="+ImageSRC+" width='300' height='300'>";
+   }
+ 
+ </script>
+ {%endblock content%}

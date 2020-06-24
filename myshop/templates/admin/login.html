@@ -1,0 +1,51 @@
+{%extends "layout.html"%}
+{%block content%}
+<div class="container">  
+<div class="row py-3">
+<div class="col-md-4"></div>
+<div class="col-md-4"> 
+<form action="" method="POST" enctype="multipart/form-data" class="border border-muted p-2">
+{{form.hidden_tag()}}
+<fieldset class="form-group">
+<legend class="text-center text-light font-weight-bold bg-info py-2"
+>Admin Login</legend>
+{%include '_message.html'%}
+    <!-- form groups -->
+<div class="form-group">
+    {{form.email.label(class="form-control-label font-weight-bold")}}
+    {%if form.email.errors%}
+      {{form.email(class="form-control form-control-md is-invalid")}}
+      <div class="invalid-feedback">
+        {%for error in form.email.errors%}
+        <span>{{error}}</span>
+        {%endfor%}
+    </div>
+    {%else%}
+    {{form.email(class="form-control form-control-md")}}
+    {%endif%}
+    </div>
+    <!-- form groups -->
+<div class="form-group">
+    {{form.password.label(class="form-control-label font-weight-bold")}}
+    {%if form.password.errors%}
+      {{form.password(class="form-control form-control-md is-invalid")}}
+      <div class="invalid-feedback">
+        {%for error in form.password.errors%}
+        <span>{{error}}</span>
+        {%endfor%}
+    </div>
+    {%else%}
+    {{form.password(class="form-control form-control-md")}}
+    {%endif%}
+    </div>
+    <!-- form groups -->
+<div class="form-group">
+    {{form.submit(class="btn btn-outline-info")}}
+    </div>
+</fieldset> 
+</form>
+</div>
+<div class="col-md-4"></div>
+</div>
+</div>
+{%endblock content%}

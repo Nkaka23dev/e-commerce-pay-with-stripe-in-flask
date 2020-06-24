@@ -1,0 +1,193 @@
+{%extends "layout.html"%}
+{%block content%}
+<div class="container mt-2">
+<div class="row">
+<div class="col-md-2"></div>
+ <div class="col-md-8">
+     <h2 class="bg-danger text-center py-1">Register</h2>
+ </div>
+<div class="col-md-2"></div>
+</div>
+ <form action="" method="POST" enctype="multipart/form-data">
+    {{form.hidden_tag()}}
+ <div class="row">
+ <div class="col-md-2"></div>
+ <div class="col-md-4">
+     <!-- form groups start from here -->
+ <div class="form-group">
+ {{form.name.label(class="form-control-label")}}
+ {%if form.name.errors%}
+ {{form.name(class="form-control form-control-sm is-invalid")}}
+ {%for error in form.name.errors%}
+ <div class="invalid-feedback">
+    <span>{{error}}</span>
+ </div>
+ {%endfor%}
+ {%else%}
+ {{form.name(class="form-control form-control-sm")}}
+ {%endif%}
+ </div>
+   <!-- form groups start from here -->
+   <div class="form-group">
+    {{form.username.label(class="form-control-label")}}
+    {%if form.username.errors%}
+    {{form.username(class="form-control form-control-sm is-invalid")}}
+    {%for error in form.username.errors%}
+    <div class="invalid-feedback">
+       <span>{{error}}</span>
+    </div>
+    {%endfor%}
+    {%else%}
+    {{form.username(class="form-control form-control-sm")}}
+    {%endif%}
+    </div>
+      <!-- form groups start from here -->
+ <div class="form-group">
+    {{form.email.label(class="form-control-label")}}
+    {%if form.email.errors%}
+    {{form.email(class="form-control form-control-sm is-invalid")}}
+    {%for error in form.email.errors%}
+    <div class="invalid-feedback">
+       <span>{{error}}</span>
+    </div>
+    {%endfor%}
+    {%else%}
+    {{form.email(class="form-control form-control-sm")}}
+    {%endif%}
+    </div>
+      <!-- form groups start from here -->
+ <div class="form-group">
+    {{form.password.label(class="form-control-label")}}
+    {%if form.password.errors%}
+    {{form.password(class="form-control form-control-sm is-invalid")}}
+    {%for error in form.password.errors%}
+    <div class="invalid-feedback">
+       <span>{{error}}</span>
+    </div>
+    {%endfor%}
+    {%else%}
+    {{form.password(class="form-control form-control-sm")}}
+    {%endif%}
+    </div>
+        <!-- form groups start from here -->
+ <div class="form-group">
+    {{form.comfirm_password.label(class="form-control-label")}}
+    {%if form.comfirm_password.errors%}
+    {{form.comfirm_password(class="form-control form-control-sm is-invalid")}}
+    {%for error in form.comfirm_password.errors%}
+    <div class="invalid-feedback">
+       <span>{{error}}</span>
+    </div>
+    {%endfor%}
+    {%else%}
+    {{form.comfirm_password(class="form-control form-control-sm")}}
+    {%endif%}
+    </div>
+         <!-- form groups start from here -->
+ <div class="form-group">
+    {{form.country.label(class="form-control-label")}}
+    {%if form.country.errors%}
+    {{form.country(class="form-control form-control-sm is-invalid")}}
+    {%for error in form.country.errors%}
+    <div class="invalid-feedback">
+       <span>{{error}}</span>
+    </div>
+    {%endfor%}
+    {%else%}
+    {{form.country(class="form-control form-control-sm")}}
+    {%endif%}
+    </div>
+ </div>
+ <div class="col-md-4">
+            <!-- form groups start from here -->
+ <div class="form-group">
+    {{form.state.label(class="form-control-label")}}
+    {%if form.state.errors%}
+    {{form.state(class="form-control form-control-sm is-invalid")}}
+    {%for error in form.state.errors%}
+    <div class="invalid-feedback">
+       <span>{{error}}</span>
+    </div>
+    {%endfor%}
+    {%else%}
+    {{form.state(class="form-control form-control-sm")}}
+    {%endif%}
+    </div>
+        <!-- form groups start from here -->
+ <div class="form-group">
+    {{form.city.label(class="form-control-label")}}
+    {%if form.city.errors%}
+    {{form.city(class="form-control form-control-sm is-invalid")}}
+    {%for error in form.city.errors%}
+    <div class="invalid-feedback">
+       <span>{{error}}</span>
+    </div>
+    {%endfor%}
+    {%else%}
+    {{form.city(class="form-control form-control-sm")}}
+    {%endif%}
+    </div>
+        <!-- form groups start from here -->
+ <div class="form-group">
+    {{form.contact.label(class="form-control-label")}}
+    {%if form.contact.errors%}
+    {{form.contact(class="form-control form-control-sm is-invalid")}}
+    {%for error in form.contact.errors%}
+    <div class="invalid-feedback">
+       <span>{{error}}</span>
+    </div>
+    {%endfor%}
+    {%else%}
+    {{form.contact(class="form-control form-control-sm")}}
+    {%endif%}
+    </div>
+        <!-- form groups start from here -->
+ <div class="form-group">
+    {{form.address.label(class="form-control-label")}}
+    {%if form.address.errors%}
+    {{form.address(class="form-control form-control-sm is-invalid")}}
+    {%for error in form.address.errors%}
+    <div class="invalid-feedback">
+       <span>{{error}}</span>
+    </div>
+    {%endfor%}
+    {%else%}
+    {{form.address(class="form-control form-control-sm")}}
+    {%endif%}
+    </div>
+        <!-- form groups start from here -->
+ <div class="form-group">
+    {{form.zip_code.label(class="form-control-label")}}
+    {%if form.zip_code.errors%}
+    {{form.zip_code(class="form-control form-control-sm is-invalid")}}
+    {%for error in form.zip_code.errors%}
+    <div class="invalid-feedback">
+       <span>{{error}}</span>
+    </div>
+    {%endfor%}
+    {%else%}
+    {{form.zip_code(class="form-control form-control-sm")}}
+    {%endif%}
+    </div>
+     <!-- customer image is starting here -->
+    <div class="form-group">
+        {{form.profile.label(class='form-control-label')}}
+        {{form.profile(class='form-control-file')}}
+        {%if form.profile.errors%}
+        {%for error in form.profile.errors%}
+        <span class="text-danger">{{error}}</span>
+        {%endfor%}
+        {%endif%}
+     </div>
+     <div class="form-group">
+      <a href="{{url_for('home')}}" class="btn btn-danger btn-sm float-right">Back</a>
+     </div>
+     <div class="form-group">
+      {{form.submit(class="btn btn-info btn-sm float-left")}}
+     </div>
+ </div>
+ <div class="col-md-2"></div>
+ </div>
+</form>
+</div>
+{%endblock content%}
